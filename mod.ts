@@ -14,10 +14,11 @@ export default function documentDir(): string | null {
     case "linux":
       return Deno.env.get("XDG_DOCUMENTS_DIR") ?? null;
 
-    case "darwin":
+    case "darwin": {
       const home = Deno.env.get("HOME");
       if (home) return `${home}/Documents`;
       break;
+    }
 
     case "windows":
       return Deno.env.get("FOLDERID_Documents") ?? null;
